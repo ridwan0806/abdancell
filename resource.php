@@ -13,7 +13,8 @@
 			}
 		}
 
-		public function lihat_produk(){
+		public function lihat_produk()
+		{
 			$sql = mysqli_query($this->conn,"select * from barang");
 			while($row = mysqli_fetch_array($sql))
 			{
@@ -21,5 +22,29 @@
 			}
 			return $result;
 		}
+
+		public function tambah_produk($kode_barang,$nama_barang,$kategori,$brand,$hpp,$harga_jual,$stok)
+		{
+			mysqli_query($this->conn,"insert into barang values('$kode_barang','$nama_barang','$kategori','$brand','$hpp','$harga_jual','$stok')");
+		}
+
+		public function get_kode_produk($kode_barang)
+		{
+			$sql = mysqli_query($this->conn,"select * from barang where kode_barang='$kode_barang'");
+			return $sql->fetch_array();
+		}
+
+		public function edit_produk($nama_barang,$kategori,$brand,$hpp,$harga_jual,$stok,$kode_barang)
+		{
+			mysqli_query($this->conn,"update barang set nama_barang='$nama_barang',kategori='$kategori',
+			brand='$brand',hpp='$hpp',harga_jual='$harga_jual',stok='$stok' where kode_barang='$kode_barang'
+			");
+		}
+
+		public function hapus_produk($kode_barang)
+		{
+			mysqli_query($this->conn,"delete from barang where kode_barang='$kode_barang'");
+		}
+
 	}
 ?>

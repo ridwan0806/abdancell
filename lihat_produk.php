@@ -14,14 +14,16 @@ $show = $produk->lihat_produk();
 <body>
 	<table border="1">
 		<tr>
-			<td>NO</td>
-			<td>ID</td>
-			<td>Produk</td>
+			<td>No</td>
+			<td>ID Produk</td>
+			<td>Nama Produk</td>
 			<td>Kategori</td>
 			<td>Branch</td>
 			<td>HPP</td>
 			<td>Harga Jual</td>
 			<td>Stok</td>
+			<td>Edit</td>
+			<td>Hapus</td>
 		</tr>
 		<tr>
 			<?php
@@ -36,10 +38,14 @@ $show = $produk->lihat_produk();
 			<td><?php echo $row['hpp']; ?></td>
 			<td><?php echo $row['harga_jual']; ?></td>
 			<td><?php echo $row['stok']; ?></td>
+			<td><a href="edit_produk.php?id=<?php echo $row['kode_barang']; ?>">edit</td>
+			<td><a href="produk.php?action=deleteproduk&id=<?php echo $row['kode_barang']; ?>">hapus</td>
 		</tr>
 			<?php
 		}
 			?>
 	</table>
+	<br>
+<a href="tambah_produk.php">Tambah Produk</a>
 </body>
 </html>
