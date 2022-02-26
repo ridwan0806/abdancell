@@ -7,6 +7,6 @@
 </head>
 <body>
 	<a href="lihat_produk.php">Data Barang</a>
-	<a href="">Penjualan</a>
+	<a href="lihat_trx.php">Penjualan</a>
 </body>
 </html>

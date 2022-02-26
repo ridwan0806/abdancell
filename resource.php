@@ -46,5 +46,24 @@
 			mysqli_query($this->conn,"delete from barang where kode_barang='$kode_barang'");
 		}
 
+		// bagian transaksi..
+		public function summary_trx()
+		{
+			$sql = mysqli_query($this->conn,"SELECT a.tanggal,
+			SUM(a.`qty`) AS jml_produk_terjual,
+			SUM(a.qty*b.harga_jual) AS setoran,
+			SUM(a.`qty`*b.hpp) AS modal,
+			SUM((a.`qty`*b.`harga_jual`)-a.`qty`*b.`hpp`) AS laba
+			FROM transaksi a JOIN barang b
+			ON a.`kode_barang`=b.`kode_barang`
+			GROUP BY a.`tanggal`
+			ORDER BY a.tanggal DESC
+			");
+			while($row = mysqli_fetch_array($sql))
+			{
+				$result[] = $row;
+			}
+			return $result;
+		}
 	}
 ?>
