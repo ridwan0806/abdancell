@@ -6,6 +6,7 @@
 	<title>abdan cell</title>
 </head>
 <body>
-
+	<a href="">Data Barang</a>
+	<a href="">Penjualan</a>
 </body>
 </html>
